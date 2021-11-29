@@ -15,3 +15,5 @@ for (let i = 0; i < bills.length; i ++) {
   tips[i] = calcTip(bills[i]);
   totals[i] = tips[i] + bills[i];
 }
+
+console.log(totals);
