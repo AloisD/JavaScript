@@ -75,7 +75,6 @@ function setLikelyWinner(inputGame) {
     console.log("Draw");
   }
 }
-
 setLikelyWinner(game);
 
 /* 🏁 Exercice 2
@@ -87,7 +86,8 @@ Probabilité de victoire pour Bayern Munich : 1,33 ✓
 Probabilité d’égalité : 3,25 ✓
 Probabilité de victoire de Borussia Dortmund : 6,5 ✓
 Bien récupérer les noms des équipes depuis l’objet ‘game’, ne pas les “hardcoder”. ✓
-Créer un objet appelé ‘scorers’ qui contient le nom des joueurs qui ont marqué en propriété et le nombre de buts qu’ils ont marqué en value. Exemple : */
+Créer un objet appelé ‘scorers’ qui contient le nom des joueurs qui ont marqué en propriété et le nombre de buts qu’ils ont marqué en value.  ✓
+*/
 
 for (let i = 0; i < game.scored.length; i ++) {
   console.log("But " + i + " : " +  game.scored[i]);
@@ -108,7 +108,6 @@ for (let i = 0; i < Object.values(game.odds).length; i ++) {
 }
 
 const scorers = {};
-
 for (let i = 0; i < game.scored.length; i ++) {
   if (scorers[game.scored[i]]) {
     scorers[game.scored[i]] += 1;
@@ -116,23 +115,17 @@ for (let i = 0; i < game.scored.length; i ++) {
     scorers[game.scored[i]] = 1;
   }
 }
-
 console.log(scorers);
 
-/* {
-  Gnarby: 1,
-  Hummels: 1,
-  Lewandowski: 2
-} */
 
 /* 🏁 Exercice 3
 Cette fois-ci, nous avons un tableau à 2 dimensions appelé ‘gameEvents’ (voir en dessous) avec le log de tous les évènements qui se sont passés pendant le match. La première case d’un sous-tableau correspond à la minute de l’évènement, la 2ème case correspond au type d’évènement.
 
 Tâches :
-Créer un tableau ‘events’ des différents évènements qui se sont déroulés (pas de doublon !).
-Après que le jeux soit fini, on a décidé que le carton jaune de la minute 64 n’était pas juste, Le supprimer du log d’évènements.
-Calculer et afficher ce texte dans la console : “Un évènement est apparu en moyenne toutes les 9 minutes”. (Un jeu de foot dure 90 minutes).
-Faire une boucle sur ‘gameEvents’ et afficher pour chaque élément dans la console s’il s’est déroulé dans la première ou deuxième moitié du jeu :
+Créer un tableau ‘events’ des différents évènements qui se sont déroulés (pas de doublon !). ✓
+Après que le jeux soit fini, on a décidé que le carton jaune de la minute 64 n’était pas juste, Le supprimer du log d’évènements. ✓
+Calculer et afficher ce texte dans la console : “Un évènement est apparu en moyenne toutes les 9 minutes”. (Un jeu de foot dure 90 minutes). ✓
+Faire une boucle sur ‘gameEvents’ et afficher pour chaque élément dans la console s’il s’est déroulé dans la première ou deuxième moitié du jeu : ✓
 [PREMIÈRE MOITIÉ] 17 . ⚽️ GOAL */
 
 const gameEvents = [
@@ -148,3 +141,22 @@ const gameEvents = [
   [80, "⚽ GOAL"],
   [92, "🟨 Yellow card"],
 ];
+
+let events =  [];
+for (let i = 0; i < gameEvents.length; i ++) {
+  if (!events.includes(gameEvents[i][1])) {
+    events.push(gameEvents[i][1]);
+  }
+}
+
+gameEvents.splice(4,1); //I can not find a way to do it dynamically
+
+console.log("Un évènement est apparu en moyenne toutes les " + 90/gameEvents.length + " minutes");
+
+for (let i = 0; i < gameEvents.length; i ++) {
+  if (gameEvents[i][0] <= 45) {
+    console.log("[PREMIÈRE MOITIÉ] " + gameEvents[i]);
+  } else {
+    console.log("[SECONDE MOITIÉ] " + gameEvents[i]);
+  }
+}
