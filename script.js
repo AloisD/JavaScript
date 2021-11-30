@@ -1,89 +1,23 @@
 "use strict";
 
-// Here are our Astro signs provided as a string.
+/* Crée un objet billyTheCat
+il doit avoir une propriété name,
+une propriété color,
+une propriété favouriteFoods (un tableau avec plusieurs entrées),
+une propriété isHungry définie à true
+et une méthode meow qui imprime “Meooow” dans la console
+Ensuite, crée une variable selectedProperty et, à l’aide de prompt, demande à l’utilisateur de choisir la propriété de l’objet qu’il veut afficher.
+Enfin, utilise console.log pour afficher la bonne propriété (en utilisant des crochets []). */
 
-const aries = `♈`,
-  taurus = `♉`,
-  gemini = `♊`,
-  cancer = `♋`,
-  leo = `♌`,
-  virgo = `♍`,
-  libra = `♎`,
-  scorpio = `♏`,
-  sagittarius = `♐`,
-  capricorn = `♑`,
-  aquarius = `♒`,
-  pisces = `♓︎`;
+const billyTheCat = {
+  name: "billy",
+  color: "",
+  favouriteFoods: [],
+  isHungry: true,
+  meow: function() {
+    console.log("Meooow");
+  }
+}
 
-// In Western Astrology there are 12 signs, organized by Earth Elements (Eart, Water, Air, Fire)  //
-// You are going to manipulate the following arrays along with this challenge:  //
-
-const fireSigns = [aries, leo];
-const earthSigns = [taurus, virgo, capricorn, sagittarius];
-const airSigns = [gemini, libra, aquarius];
-const waterSigns = [cancer, scorpio, pisces];
-
-/* –––––––––––––––––– */
-
-/*  🏁 Add one final element to an array 
-    
-    Sagittarius is missing from fire signs please add it at the END of the array
-    and verify the result.
-
-*/
-
-// ✒️ Write your code here
-
-fireSigns.push(sagittarius);
-
-console.log(fireSigns);
-
-
-console.log(
-  fireSigns[fireSigns.length - 1] === "♐"
-    ? "Good Answer ✅"
-    : "Wrong Answer ❌"
-);
-
-
-/* 🏁 Remove the last element of an array
-
-      Sagittarius should not be on earth Signs, please remove Sagittarius from the array, and verify
-      the result.
-*/
-
-// ✒️ Write your code here
-
-earthSigns.pop();
-console.log(earthSigns);
-
-console.log(earthSigns[earthSigns.length - 1] !== "♐" ? "Good Answer ✅" : "Wrong Answer ❌");
-
-/* 
-    🏁  Initialize an empty array in javascript
-     Please initialize an empty array and store it in a let variable called zodiacSigns
-
- */
-
-// ✒️ Write your code here
-
-let zodiacSigns = null;
-
-/*  
-     🏁 🏁 Merge Fire, Earth, Water, and Air arrays into zodiacSigns (in that order), using the concat methods 
-*/
-
-// ✒️ Write your code here
-
-zodiacSigns = fireSigns.concat(earthSigns, waterSigns, airSigns);
-
-console.log(
-  (zodiacSigns !== null && zodiacSigns.toString() === "♈,♌,♐,♉,♍,♑,♋,♏,♓︎,♊,♎,♒")
-    ? "Good Answer ✅"
-    : "Wrong Answer ❌"
-);
-/*  
-    🏁 Please print dynamically in console how many elements you have now in the zodiacSigns array
- */
-
-console.log("There are " + zodiacSigns.length + " signs in the zodiac"); // replaced "is" with "are"
+const selectedProperty = prompt('Tape la propriété que tu veux afficher') ;
+console.log(billyTheCat[selectedProperty]) ;
