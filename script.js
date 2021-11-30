@@ -1,34 +1,89 @@
 "use strict";
 
-// Welcome to DonkeyDecode, your mission is to decode the full message. Good luck
+// Here are our Astro signs provided as a string.
 
-// EX 01 -  Use a loop to remove the 'X' and use console.log to reveal the message 
-const hiddenMessage = ["X", "X", "X", "X", "W", "X", "E",  "X", "X", "X", "X", "X", "L", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "L", "X", "X", "X", "X", "X", "X", "X", "X", "X", " ","X", "X", "X", "X", "X", "X", "X", "X", "D", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", "O", "X", "X", "X", "X", "X", "X", "N", "X", "X", "X", "X", "E", "X", "X", "X", "X", "X", "X", "X", "X", "X", "X", ",", "X", " ", "X"]
+const aries = `♈`,
+  taurus = `♉`,
+  gemini = `♊`,
+  cancer = `♋`,
+  leo = `♌`,
+  virgo = `♍`,
+  libra = `♎`,
+  scorpio = `♏`,
+  sagittarius = `♐`,
+  capricorn = `♑`,
+  aquarius = `♒`,
+  pisces = `♓︎`;
 
-// Your code goes here
+// In Western Astrology there are 12 signs, organized by Earth Elements (Eart, Water, Air, Fire)  //
+// You are going to manipulate the following arrays along with this challenge:  //
 
-// this feels better but the instruction was to use a loop
-/* function removeX(xOrNot) {
-  return xOrNot != "X";
-}
+const fireSigns = [aries, leo];
+const earthSigns = [taurus, virgo, capricorn, sagittarius];
+const airSigns = [gemini, libra, aquarius];
+const waterSigns = [cancer, scorpio, pisces];
 
-console.log(hiddenMessage.filter(removeX)); */
+/* –––––––––––––––––– */
 
-function removeXAndEven(inputArray) {
-  for (let i = 0; i < inputArray.length; i ++) {
-    if (inputArray[i] != "X" && inputArray[i] % 2 != 0) { console.log(inputArray[i]); }
-  }
-}
+/*  🏁 Add one final element to an array 
+    
+    Sagittarius is missing from fire signs please add it at the END of the array
+    and verify the result.
 
-removeXAndEven(hiddenMessage);
+*/
 
-// EX 02 - Remove the 'X' and the even numbers
-// Hint: As this is a string you should find a way to convert into an array.
+// ✒️ Write your code here
 
-const hiddenCode = "XXXXXXXXXXXXXXXXXXXXXXXXXXXCXXXXXXXOXXXXXDXXXXXXXXXXXXXXXEXXXX XXXXXXXXXXXXXXX:X0XXXXXXX2XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX3XXXXXX2XXXXXXXXX2XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX4XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX6XXXXXXXXXXXXXXX6XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX7XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX2XXXXXXXXXX8XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX8XXXXXXXXXXX4XXXXXXXXXXXX6XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX4XXXXXXXXXXXXXXXXXXX9XXXX9XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX2XXX4XXXXXXXXXXX6XXXXXXXXX2XXXXXXXX3XXXXXXXX2XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX4XXXXX"
+fireSigns.push(sagittarius);
 
-// Your code goes here
+console.log(fireSigns);
 
-const hiddenCodeArray = [...hiddenCode];
 
-removeXAndEven(hiddenCodeArray);
+console.log(
+  fireSigns[fireSigns.length - 1] === "♐"
+    ? "Good Answer ✅"
+    : "Wrong Answer ❌"
+);
+
+
+/* 🏁 Remove the last element of an array
+
+      Sagittarius should not be on earth Signs, please remove Sagittarius from the array, and verify
+      the result.
+*/
+
+// ✒️ Write your code here
+
+earthSigns.pop();
+console.log(earthSigns);
+
+console.log(earthSigns[earthSigns.length - 1] !== "♐" ? "Good Answer ✅" : "Wrong Answer ❌");
+
+/* 
+    🏁  Initialize an empty array in javascript
+     Please initialize an empty array and store it in a let variable called zodiacSigns
+
+ */
+
+// ✒️ Write your code here
+
+let zodiacSigns = null;
+
+/*  
+     🏁 🏁 Merge Fire, Earth, Water, and Air arrays into zodiacSigns (in that order), using the concat methods 
+*/
+
+// ✒️ Write your code here
+
+zodiacSigns = fireSigns.concat(earthSigns, waterSigns, airSigns);
+
+console.log(
+  (zodiacSigns !== null && zodiacSigns.toString() === "♈,♌,♐,♉,♍,♑,♋,♏,♓︎,♊,♎,♒")
+    ? "Good Answer ✅"
+    : "Wrong Answer ❌"
+);
+/*  
+    🏁 Please print dynamically in console how many elements you have now in the zodiacSigns array
+ */
+
+console.log("There are " + zodiacSigns.length + " signs in the zodiac"); // replaced "is" with "are"
