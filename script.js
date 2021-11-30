@@ -80,14 +80,44 @@ setLikelyWinner(game);
 
 /* 🏁 Exercice 2
 Tâches :
-Faire une boucle sur le tableau game.scored et afficher dans la console chaque nom de butteur ainsi que le numéro du but : (Exemple : “But 1 : Lewanoski”).
-Faire une boucle qui calcule la moyenne des probabilités et l’écrire dans la console.
-Afficher les 2 probabilités dans la console, mais dans un joli format comme ceci :
-Probabilité de victoire pour Bayern Munich : 1,33
-Probabilité d’égalité : 3,25
-Probabilité de victoire de Borussia Dortmund : 6,5
-Bien récupérer les noms des équipes depuis l’objet ‘game’, ne pas les “hardcoder”.
+Faire une boucle sur le tableau game.scored et afficher dans la console chaque nom de butteur ainsi que le numéro du but : (Exemple : “But 1 : Lewanoski”). ✓
+Faire une boucle qui calcule la moyenne des probabilités et l’écrire dans la console. ✓
+Afficher les 2 probabilités dans la console, mais dans un joli format comme ceci : ✓
+Probabilité de victoire pour Bayern Munich : 1,33 ✓
+Probabilité d’égalité : 3,25 ✓
+Probabilité de victoire de Borussia Dortmund : 6,5 ✓
+Bien récupérer les noms des équipes depuis l’objet ‘game’, ne pas les “hardcoder”. ✓
 Créer un objet appelé ‘scorers’ qui contient le nom des joueurs qui ont marqué en propriété et le nombre de buts qu’ils ont marqué en value. Exemple : */
+
+for (let i = 0; i < game.scored.length; i ++) {
+  console.log("But " + i + " : " +  game.scored[i]);
+}
+
+let total = 0;
+for (let i = 0; i < Object.values(game.odds).length; i ++) {
+  total += Object.values(game.odds)[i];
+}
+console.log(total / Object.values(game.odds).length);
+
+for (let i = 0; i < Object.values(game.odds).length; i ++) {
+  if (i == 1) {
+    console.log("Probabilité d'égalité : " + Object.values(game.odds)[i]);
+  } else {
+    console.log("Probabilité de victoire pour " + game[Object.keys(game.odds)[i]] + " : " + Object.values(game.odds)[i]);
+  }
+}
+
+const scorers = {};
+
+for (let i = 0; i < game.scored.length; i ++) {
+  if (scorers[game.scored[i]]) {
+    scorers[game.scored[i]] += 1;
+  } else {
+    scorers[game.scored[i]] = 1;
+  }
+}
+
+console.log(scorers);
 
 /* {
   Gnarby: 1,
