@@ -8,7 +8,7 @@ Créer un tableau ‘allPlayers’ qui contient les joueurs de chaque équipe (2
 Pendant le match, le Bayern utilise 3 joueurs remplaçants. Créer un autre tableau ‘players1Final’ contenant tous les joueurs de l’équipe originelle ainsi que ‘Thiago’ ‘Coutinho’ et ‘Perisic’. ✓
 Basé sur l’objet game.odds, créer une variable pour chaque probabilité (appelés ‘team1’, ‘draw’ et ‘team2’). ✓
 Écrire une fonction ‘printGoals’ qui prends un nombre arbitraire de joueurs et qui écrit chacun d’eux dans la console , ainsi que le nombre total de buts. ???
-L’équipe avec la probabilité la plus basse est celle la plus susceptible de gagner. Écrire dans la console quelle équipe a le plus de chance de gagner.
+L’équipe avec la probabilité la plus basse est celle la plus susceptible de gagner. Écrire dans la console quelle équipe a le plus de chance de gagner. ✓
  */
 
 const game = {
@@ -76,12 +76,6 @@ function setLikelyWinner(inputGame) {
   }
 }
 
-console.log(players1);
-console.log(players2);
-console.log(gk);
-console.log(fieldPlayers);
-console.log(allPlayers);
-console.log(players1Final);
 setLikelyWinner(game);
 
 /* 🏁 Exercice 2
