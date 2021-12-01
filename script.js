@@ -1,162 +1,90 @@
 "use strict";
 
-/* 🏁 Exercice 1
-Tâches :
-Créer un tableau de joueurs pour chaque équipe (variables ‘players1’ et ‘players2’). ✓
-Le premier joueur dans un tableau de joueurs est le gardien et les autres sont des joueurs de terrain. Pour l’équipe 1 (le Bayern de Munich), créer une variable ‘gk’ avec le nom du gardien et un tableau ‘fieldPlayers’ avec le reste des joueurs de l’équipe. ✓
-Créer un tableau ‘allPlayers’ qui contient les joueurs de chaque équipe (22 joueurs). ✓
-Pendant le match, le Bayern utilise 3 joueurs remplaçants. Créer un autre tableau ‘players1Final’ contenant tous les joueurs de l’équipe originelle ainsi que ‘Thiago’ ‘Coutinho’ et ‘Perisic’. ✓
-Basé sur l’objet game.odds, créer une variable pour chaque probabilité (appelés ‘team1’, ‘draw’ et ‘team2’). ✓
-Écrire une fonction ‘printGoals’ qui prends un nombre arbitraire de joueurs et qui écrit chacun d’eux dans la console , ainsi que le nombre total de buts. ???
-L’équipe avec la probabilité la plus basse est celle la plus susceptible de gagner. Écrire dans la console quelle équipe a le plus de chance de gagner. ✓
- */
-
-const game = {
-  team1: 'Bayern Munich',
-  team2: 'Borrussia Dortmund',
-  players: [
-    [
-      'Neuer',
-      'Pavard',
-      'Martinez',
-      'Alaba',
-      'Davies',
-      'Kimmich',
-      'Goretzka',
-      'Coman',
-      'Muller',
-      'Gnarby',
-      'Lewandowski',
-    ],
-    [
-      'Burki',
-      'Schulz',
-      'Hummels',
-      'Akanji',
-      'Hakimi',
-      'Weigl',
-      'Witsel',
-      'Hazard',
-      'Brandt',
-      'Sancho',
-      'Gotze',
-    ],
-  ],
-  score: '4:0',
-  scored: ['Lewandowski', 'Gnarby', 'Lewandowski','Hummels'],
-  date: 'Nov 9th, 2037',
-  odds: {
-    team1: 1.33,
-    x: 3.25,
-    team2: 6.5,
-  },
-};
-
-let players1 = game.players[0];
-let players2 = game.players[1];
-let gk = game.players[0][0];
-let fieldPlayers = [...players1];
-let allPlayers = [...players1, ...players2]
-fieldPlayers.shift();
-let players1Final = [...players1, "Thiago", "Coutinho", "Perisic"];
-let team1 = game.odds.team1;
-let draw = game.odds.x;
-let team2 = game.odds.team2;
-/* function printGoals() {
-  no idea what we are supposed to do here
-} */
-let likelyWinner = "";
-function setLikelyWinner(inputGame) {
-  if (inputGame.odds.team1 < inputGame.odds.x && inputGame.odds.team1 < inputGame.odds.team2) {
-    console.log(inputGame.team1);
-  } else if (inputGame.odds.team2 < inputGame.odds.x && inputGame.odds.team2 < inputGame.odds.team1) {
-    console.log(inputGame.team2);
-  } else {
-    console.log("Draw");
-  }
-}
-setLikelyWinner(game);
-
-/* 🏁 Exercice 2
-Tâches :
-Faire une boucle sur le tableau game.scored et afficher dans la console chaque nom de butteur ainsi que le numéro du but : (Exemple : “But 1 : Lewanoski”). ✓
-Faire une boucle qui calcule la moyenne des probabilités et l’écrire dans la console. ✓
-Afficher les 2 probabilités dans la console, mais dans un joli format comme ceci : ✓
-Probabilité de victoire pour Bayern Munich : 1,33 ✓
-Probabilité d’égalité : 3,25 ✓
-Probabilité de victoire de Borussia Dortmund : 6,5 ✓
-Bien récupérer les noms des équipes depuis l’objet ‘game’, ne pas les “hardcoder”. ✓
-Créer un objet appelé ‘scorers’ qui contient le nom des joueurs qui ont marqué en propriété et le nombre de buts qu’ils ont marqué en value.  ✓
-*/
-
-for (let i = 0; i < game.scored.length; i ++) {
-  console.log("But " + i + " : " +  game.scored[i]);
-}
-
-let total = 0;
-for (let i = 0; i < Object.values(game.odds).length; i ++) {
-  total += Object.values(game.odds)[i];
-}
-console.log(total / Object.values(game.odds).length);
-
-for (let i = 0; i < Object.values(game.odds).length; i ++) {
-  if (i == 1) {
-    console.log("Probabilité d'égalité : " + Object.values(game.odds)[i]);
-  } else {
-    console.log("Probabilité de victoire pour " + game[Object.keys(game.odds)[i]] + " : " + Object.values(game.odds)[i]);
-  }
-}
-
-const scorers = {};
-for (let i = 0; i < game.scored.length; i ++) {
-  if (scorers[game.scored[i]]) {
-    scorers[game.scored[i]] += 1;
-  } else {
-    scorers[game.scored[i]] = 1;
-  }
-}
-console.log(scorers);
-
-
-/* 🏁 Exercice 3
-Cette fois-ci, nous avons un tableau à 2 dimensions appelé ‘gameEvents’ (voir en dessous) avec le log de tous les évènements qui se sont passés pendant le match. La première case d’un sous-tableau correspond à la minute de l’évènement, la 2ème case correspond au type d’évènement.
-
-Tâches :
-Créer un tableau ‘events’ des différents évènements qui se sont déroulés (pas de doublon !). ✓
-Après que le jeux soit fini, on a décidé que le carton jaune de la minute 64 n’était pas juste, Le supprimer du log d’évènements. ✓
-Calculer et afficher ce texte dans la console : “Un évènement est apparu en moyenne toutes les 9 minutes”. (Un jeu de foot dure 90 minutes). ✓
-Faire une boucle sur ‘gameEvents’ et afficher pour chaque élément dans la console s’il s’est déroulé dans la première ou deuxième moitié du jeu : ✓
-[PREMIÈRE MOITIÉ] 17 . ⚽️ GOAL */
-
-const gameEvents = [
-  [17, "⚽ GOAL"],
-  [36, "🔁 Substitution"],
-  [47, "⚽ GOAL"],
-  [61, "🔁 Substitution"],
-  [64, "🟨 Yellow card"],
-  [69, "🟥 Red card"],
-  [70, "🔁 Substitution"],
-  [72, "🔁 Substitution"],
-  [76, "⚽ GOAL"],
-  [80, "⚽ GOAL"],
-  [92, "🟨 Yellow card"],
+/* const bearsPictures = [
+  "https://placebear.com/500/279",
+  "https://placebear.com/500/280",
+  "https://placebear.com/500/300",
+  "https://placebear.com/500/302",
+  "https://placebear.com/500/305"
 ];
 
-let events =  [];
-for (let i = 0; i < gameEvents.length; i ++) {
-  if (!events.includes(gameEvents[i][1])) {
-    events.push(gameEvents[i][1]);
+let billsPicture = document.querySelectorAll('img');
+
+for (let i = 0; i < billsPicture.length; i ++) {
+  billsPicture[i].src = bearsPictures[i];
+} */
+
+/* const newCatImage = document.createElement('img');
+newCatImage.src = "https://placekitten.com/408/287";
+const secondCard = document.querySelector('.second-card');
+secondCard.appendChild(newCatImage); */
+
+/* let userName = prompt("Quel est votre nom ?");
+const title = document.querySelector('h1');
+title.innerHTML = `Hello, ${userName}!`; */
+
+/* const catToMoveUp = document.querySelector('#second-cat-img');
+const firstDiv = document.querySelector('#first-div');
+firstDiv.appendChild(catToMoveUp); */
+
+/* const dogPictures = document.querySelectorAll('.img-dog');
+for (let i = 0; i < dogPictures.length; i ++) {
+  dogPictures[i].remove();
+} */
+
+/* const box = document.querySelector('.box');
+box.style.backgroundColor = "yellow";
+box.style.width = '400px';
+box.style.height = '300px';
+
+const title = document.querySelector('.title');
+title.style.color = "lightblue";
+title.style.height = '60px'; */
+
+/* const newBox = document.createElement('div');
+newBox.classList.add('box');
+const container = document.querySelector('.container-boxes');
+container.appendChild(newBox);
+
+const boxes = document.querySelectorAll('.box');
+
+for (let i = 0; i < boxes.length; i ++) {
+  boxes[i].onclick = function(){
+    boxes[i].style.backgroundColor = "red";
   }
-}
+} */
 
-gameEvents.splice(4,1); //I can not find a way to do it dynamically
+/* const image = document.querySelector('.img-dogs');
+image.addEventListener('click', function(){
+  image.src = "https://placekitten.com/408/287";
+  image.alt = "picture of cat";
+})
 
-console.log("Un évènement est apparu en moyenne toutes les " + 90/gameEvents.length + " minutes");
+const title = document.querySelector('.title');
+title.addEventListener('mouseover', function(){
+  title.style.color = "red";
+})
+title.addEventListener('mouseleave', function(){
+  title.style.color = "black";
+}) */
 
-for (let i = 0; i < gameEvents.length; i ++) {
-  if (gameEvents[i][0] <= 45) {
-    console.log("[PREMIÈRE MOITIÉ] " + gameEvents[i]);
-  } else {
-    console.log("[SECONDE MOITIÉ] " + gameEvents[i]);
-  }
-}
+/* const form = document.querySelector("#form");
+const toDo = document.querySelector("#todoInput");
+const list = document.querySelector("#todolist");
+
+form.onsubmit = function(event) {
+  event.preventDefault();
+  const newListItem = document.createElement('li');
+  newListItem.innerHTML = `${toDo.value}`;
+  list.appendChild(newListItem);
+  toDo.value = "";
+}; */
+
+const button = document.querySelector('.dropdown-btn');
+const menu = document.querySelector('.dropdown-menu-content');
+
+button.addEventListener("click", function(event) {
+  console.log(event);
+  event.preventDefault();
+  menu.classList.toggle('hidden');
+});
