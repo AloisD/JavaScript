@@ -38,23 +38,22 @@ function createCard(title, imageUrl) {
   cardImg.style.backgroundImage = `url(${imageUrl})`;
   cardImg.classList.add("card-img");
   cardHeader.appendChild(cardImg);
-  
 
-  // Step1: Create the cardBody div, add the class card-body and add it to the card
+  const cardBody = document.createElement("div");
+  cardBody.classList.add("card-body");
+  card.appendChild(cardBody);
 
-  // Step2: Create the cardTitle h2, add the class card-title,
-  // set the text inside the tag to the "title" parameter of this function
-  // and add it to the cardBody
+  const cardTitle = document.createElement("h2");
+  cardTitle.classList.add("card-title");
+  cardTitle.innerHTML = `${title}`;
+  cardBody.appendChild(cardTitle);
 
-  // Step3: Create the cardButton button, add the class card-button,
-  // set the text inside the tag to be "Adopt Now"
-  // and add it to the cardBody
+  const cardButton = document.createElement("button");
+  cardButton.classList.add("card-button");
+  cardButton.innerHTML = "Adopt Now";
+  cardBody.appendChild(cardButton);
 }
 
-/* Step 4: Create a for loop, for each element of the array, 
- call the function createCard with the corresponding parameter */
-
-
-/* cardBody : un div avec la classe card-body ajoutée à card.
-cardTitle : un h2 avec la classe card-title, ajoute-le title passé en paramètre au contenu du h2 (avec innerHTML) et ajoute l’élément à cardBody.
-cardButton : un bouton avec la classe “card-button”, le texte ‘Adopt Now’ (avec innerHTML) et ajoute-le à “cardBody’ */
+for (let i = 0; i < animalsToAdopt.length; i ++) {
+  createCard(animalsToAdopt[i].name, animalsToAdopt[i].picture);
+}
