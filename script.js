@@ -1,90 +1,60 @@
 "use strict";
 
-/* const bearsPictures = [
-  "https://placebear.com/500/279",
-  "https://placebear.com/500/280",
-  "https://placebear.com/500/300",
-  "https://placebear.com/500/302",
-  "https://placebear.com/500/305"
+const cards = document.querySelector(".cards");
+
+const animalsToAdopt = [
+  {
+    name: "Lucky",
+    picture: "https://placekitten.com/200/287"
+  },
+  {
+    name: "Symba",
+    picture: "https://placekitten.com/200/139"
+  },
+  {
+    name: "Léo",
+    picture: "https://placekitten.com/200/90"
+  },
+  {
+    name: "Milo",
+    picture: "https://placekitten.com/200/194"
+  },
+  {
+    name: "Charly",
+    picture: "https://placekitten.com/200/179"
+  }
 ];
 
-let billsPicture = document.querySelectorAll('img');
+function createCard(title, imageUrl) {
+  const card = document.createElement("div");
+  card.classList.add("card");
+  cards.appendChild(card);
 
-for (let i = 0; i < billsPicture.length; i ++) {
-  billsPicture[i].src = bearsPictures[i];
-} */
+  const cardHeader = document.createElement("div");
+  cardHeader.classList.add("card-header");
+  card.appendChild(cardHeader);
 
-/* const newCatImage = document.createElement('img');
-newCatImage.src = "https://placekitten.com/408/287";
-const secondCard = document.querySelector('.second-card');
-secondCard.appendChild(newCatImage); */
+  const cardImg = document.createElement("div");
+  cardImg.style.backgroundImage = `url(${imageUrl})`;
+  cardImg.classList.add("card-img");
+  cardHeader.appendChild(cardImg);
+  
 
-/* let userName = prompt("Quel est votre nom ?");
-const title = document.querySelector('h1');
-title.innerHTML = `Hello, ${userName}!`; */
+  // Step1: Create the cardBody div, add the class card-body and add it to the card
 
-/* const catToMoveUp = document.querySelector('#second-cat-img');
-const firstDiv = document.querySelector('#first-div');
-firstDiv.appendChild(catToMoveUp); */
+  // Step2: Create the cardTitle h2, add the class card-title,
+  // set the text inside the tag to the "title" parameter of this function
+  // and add it to the cardBody
 
-/* const dogPictures = document.querySelectorAll('.img-dog');
-for (let i = 0; i < dogPictures.length; i ++) {
-  dogPictures[i].remove();
-} */
+  // Step3: Create the cardButton button, add the class card-button,
+  // set the text inside the tag to be "Adopt Now"
+  // and add it to the cardBody
+}
 
-/* const box = document.querySelector('.box');
-box.style.backgroundColor = "yellow";
-box.style.width = '400px';
-box.style.height = '300px';
+/* Step 4: Create a for loop, for each element of the array, 
+ call the function createCard with the corresponding parameter */
 
-const title = document.querySelector('.title');
-title.style.color = "lightblue";
-title.style.height = '60px'; */
 
-/* const newBox = document.createElement('div');
-newBox.classList.add('box');
-const container = document.querySelector('.container-boxes');
-container.appendChild(newBox);
-
-const boxes = document.querySelectorAll('.box');
-
-for (let i = 0; i < boxes.length; i ++) {
-  boxes[i].onclick = function(){
-    boxes[i].style.backgroundColor = "red";
-  }
-} */
-
-/* const image = document.querySelector('.img-dogs');
-image.addEventListener('click', function(){
-  image.src = "https://placekitten.com/408/287";
-  image.alt = "picture of cat";
-})
-
-const title = document.querySelector('.title');
-title.addEventListener('mouseover', function(){
-  title.style.color = "red";
-})
-title.addEventListener('mouseleave', function(){
-  title.style.color = "black";
-}) */
-
-/* const form = document.querySelector("#form");
-const toDo = document.querySelector("#todoInput");
-const list = document.querySelector("#todolist");
-
-form.onsubmit = function(event) {
-  event.preventDefault();
-  const newListItem = document.createElement('li');
-  newListItem.innerHTML = `${toDo.value}`;
-  list.appendChild(newListItem);
-  toDo.value = "";
-}; */
-
-const button = document.querySelector('.dropdown-btn');
-const menu = document.querySelector('.dropdown-menu-content');
-
-button.addEventListener("click", function(event) {
-  console.log(event);
-  event.preventDefault();
-  menu.classList.toggle('hidden');
-});
+/* cardBody : un div avec la classe card-body ajoutée à card.
+cardTitle : un h2 avec la classe card-title, ajoute-le title passé en paramètre au contenu du h2 (avec innerHTML) et ajoute l’élément à cardBody.
+cardButton : un bouton avec la classe “card-button”, le texte ‘Adopt Now’ (avec innerHTML) et ajoute-le à “cardBody’ */
